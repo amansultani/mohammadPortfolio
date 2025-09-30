@@ -308,7 +308,7 @@
                         </div>
                     </div>
                     <!-- Explore Countries Project-->
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Explore Countries</h3>
                             <div class="subheading mb-3">React using REST API</div>
@@ -327,6 +327,49 @@
                                 <i class="fab fa-github me-2"></i>
                                 GitHub - amansultani/explore-countries
                             </a>
+                        </div>
+                    </div>
+                    <!-- Motivational Quote (Serverless) Project-->
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Motivational Quote Service</h3>
+                            <div class="subheading mb-3">AWS Lambda Function URL + External API (ZenQuotes)</div>
+                            <p class="text-normal">A tiny serverless microservice that returns a random motivational quote. Implemented with AWS Lambda (Node.js), CORS enabled, and consumed by this portfolio.</p>
+                            <!-- the visual quote box-->
+                            <div class="card" id="quote-card" style="border-left: 4px solid #0d6efd; padding: 1rem">
+                                <blockquote class="mb-0" id="quote-text">Loading motivational quote…</blockquote>
+                                <cite class="d-block mt-2 text-muted" id="quote-author"></cite>
+                            </div>
+                            <p class="mb-1 text-normal">
+                                <strong>Skills:</strong>
+                                AWS Lambda · Serverless · JavaScript · CORS
+                            </p>
+                            <a href="YOUR_FUNCTION_URL" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt me-2"></i>
+                                Lambda Function URL (live)
+                            </a>
+                            <!-- fetch the quote from Lambda-->
+                            <script>
+                                (function () {
+                                    var endpoint = 'https://b5o4fsvsqpsokzoaguzgiefyf40rwfzo.lambda-url.us-east-1.on.aws/'; // <-- replace with your Function URL
+                                    fetch(endpoint, { method: 'GET', cache: 'no-store' })
+                                        .then(function (r) {
+                                            return r.json();
+                                        })
+                                        .then(function (d) {
+                                            var q = document.getElementById('quote-text');
+                                            var a = document.getElementById('quote-author');
+                                            q.textContent = d.quote ? '“' + d.quote + '”' : 'Stay curious. Keep building.';
+                                            a.textContent = d.author ? '— ' + d.author : '';
+                                        })
+                                        .catch(function () {
+                                            var q = document.getElementById('quote-text');
+                                            var a = document.getElementById('quote-author');
+                                            q.textContent = 'Keep going. 🚀';
+                                            a.textContent = '';
+                                        });
+                                })();
+                            </script>
                         </div>
                     </div>
                 </div>
